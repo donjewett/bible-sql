@@ -437,9 +437,9 @@ BEGIN
 		UPDATE [Versions] SET [ParentId] = @parentId WHERE [Id] = @id AND @parent IS NOT NULL AND [ParentId] IS NULL
 	END
 
-	IF @versionUrl IS NOT NULL EXEC add_Resource @version=@id, @type='version', @url=@versionUrl, @official=1
-	IF @licenseUrl IS NOT NULL EXEC add_Resource @version=@id, @type='license', @url=@licenseUrl, @official=1
-	IF @readUrl IS NOT NULL EXEC add_Resource @version=@id, @type='read', @url=@readUrl, @official=1
+	IF @versionUrl IS NOT NULL EXEC add_Resource @version=@code, @type='version', @url=@versionUrl, @official=1
+	IF @licenseUrl IS NOT NULL EXEC add_Resource @version=@code, @type='license', @url=@licenseUrl, @official=1
+	IF @readUrl IS NOT NULL EXEC add_Resource @version=@code, @type='read', @url=@readUrl, @official=1
 
 END
 GO
