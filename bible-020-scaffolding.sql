@@ -467,6 +467,7 @@ BEGIN
 	SET NOCOUNT ON;
 
 	DECLARE @versionId int = (SELECT [Id] FROM [Versions] WHERE [Code] = @version)
+	
 	SET @id = (SELECT [Id] FROM Editions WHERE [Code] = @code)
 	IF @id IS NULL
 	BEGIN
@@ -515,7 +516,7 @@ BEGIN
 		SET @id = SCOPE_IDENTITY()
 	END
 
-	IF @sourceUrl IS NOT NULL EXEC add_Resource @version=@code, @edition=@edition, @type='file', @url=@sourceUrl
+	IF @sourceUrl IS NOT NULL EXEC add_Resource @version=@version, @edition=@edition, @type='file', @url=@sourceUrl
 	
 END
 GO
