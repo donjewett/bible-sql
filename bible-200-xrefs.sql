@@ -1,0 +1,72 @@
+/***************************************************************************
+* Bible Database: SQL Server
+* https://github.com/donjewett/bible-sql
+*
+* bible-200-xrefs.sql
+*
+* Version: 2024.8.23
+* 
+* Module: Cross References
+* Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+* 
+***************************************************************************/
+
+
+----------------------------------------------------------------------------
+-- CrossReferences Table
+----------------------------------------------------------------------------
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'CrossReferences')
+CREATE TABLE [CrossReferences](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[VerseId] [int] NOT NULL,
+	[RefId] [int] NOT NULL,
+	[Weight] [int] NULL,
+ CONSTRAINT [PK_CrossReferences] PRIMARY KEY CLUSTERED ([Id] ASC)
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = 'CrossReferences' AND CONSTRAINT_NAME = 'FK_CrossReferences_Verse')
+BEGIN
+	ALTER TABLE [CrossReferences] WITH CHECK ADD CONSTRAINT [FK_CrossReferences_Verse] FOREIGN KEY([VerseId]) REFERENCES [Verses] ([Id])
+	ALTER TABLE [CrossReferences] CHECK CONSTRAINT [FK_CrossReferences_Verse]
+END
+
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = 'CrossReferences' AND CONSTRAINT_NAME = 'FK_CrossReferences_Reference')
+BEGIN
+	ALTER TABLE [CrossReferences] WITH CHECK ADD CONSTRAINT [FK_CrossReferences_Reference] FOREIGN KEY([RefId]) REFERENCES [Verses] ([Id])
+	ALTER TABLE [CrossReferences] CHECK CONSTRAINT [FK_CrossReferences_Reference]
+END
+
+IF NOT EXISTS (SELECT name FROM sys.indexes WHERE name = 'UQ_CrossReferences_Verses')
+CREATE UNIQUE NONCLUSTERED INDEX [UQ_CrossReferences_Verses] ON [CrossReferences]
+(
+	[VerseId] ASC,
+	[RefId] ASC
+)
+
+
+----------------------------------------------------------------------------
+-- add_XRef
+----------------------------------------------------------------------------
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'add_XRef')
+	DROP PROCEDURE [add_XRef]
+GO
+
+CREATE PROCEDURE add_XRef
+	@v1 int,
+	@v2 int,
+	@w int = NULL
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	IF NOT EXISTS (SELECT * FROM [CrossReferences] WHERE [VerseId] = @v1 AND [RefId] = @v2)
+		INSERT INTO [CrossReferences]([VerseId], [RefId], [Weight]) VALUES (@v1, @v2, @w)
+
+	IF NOT EXISTS (SELECT * FROM [CrossReferences] WHERE [VerseId] = @v2 AND [RefId] = @v1)
+		INSERT INTO [CrossReferences]([VerseId], [RefId], [Weight]) VALUES (@v2, @v1, @w)
+
+END
+GO
