@@ -4,7 +4,7 @@
 *
 * bible-040-versions.sql
 *
-* Version: 2024.8.22
+* Version: 2024.8.23
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 * 
@@ -14,62 +14,62 @@
 -- Versions
 ----------------------------------------------------------------------------
 EXEC add_Version @code='RVA', @name='Reina-Valera Antigua', @lang='esp', @year=1569, @hebrew='MAS', @greek='TRG', @license=1
-EXEC add_Version @code='RV-esp', @name='Reina Valera', @lang='esp', @year=1602, @hebrew='MAS', @greek='TRG', @license=1
+EXEC add_Version @code='RV-esp', @name='Reina Valera', @lang='esp', @year=1602, @parent='RVA', @hebrew='MAS', @greek='TRG', @license=1
 EXEC add_Version @code='KJV', @name='King James Version', @lang='eng', @year=1611, @hebrew='MAS', @greek='TRG', @license=2
 EXEC add_Version @code='BGS', @name='Brenton Greek Septuagint', @lang='grc', @year=1844, @hebrew='LXX', @license=1
 EXEC add_Version @code='YLT', @name='Young’s Literal Translation', @lang='eng', @year=1862, @hebrew='MAS', @greek='TRG', @license=1
 EXEC add_Version @code='Darby', @name='Darby Translation', @lang='eng', @year=1884, @license=1
-EXEC add_Version @code='RV', @name='Revised Version', @lang='eng', @year=1885, @hebrew='MAS', @greek='AX', @license=1
-EXEC add_Version @code='NRSV', @name='New Revised Standard Version', @lang='eng', @year=1889, @hebrew='MAS', @greek='AX', @license=7, @level=11.00
+EXEC add_Version @code='RV', @name='Revised Version', @lang='eng', @year=1885, @parent='KJV', @hebrew='MAS', @greek='AX', @license=1
+EXEC add_Version @code='NRSV', @name='New Revised Standard Version', @lang='eng', @year=1889, @parent='RSV', @hebrew='MAS', @greek='AX', @license=7, @level=11.00
 EXEC add_Version @code='NA', @name='Novum Testamentum Graece', @lang='grc', @year=1898, @sub='(Nestle-Aland GNT)', @greek='AX', @license=11
-EXEC add_Version @code='ASV', @name='American Standard Version', @lang='eng', @year=1901, @hebrew='MAS', @greek='AX', @license=1
+EXEC add_Version @code='ASV', @name='American Standard Version', @lang='eng', @year=1901, @parent='RV', @hebrew='MAS', @greek='AX', @license=1
 EXEC add_Version @code='TCNT', @name='Twentieth Century New Testament', @lang='eng', @year=1904, @greek='AX', @license=1
 EXEC add_Version @code='BHK', @name='Biblia Hebraica', @lang='hbo', @year=1906, @sub='(Kittel)', @hebrew='MAS', @license=1
 EXEC add_Version @code='JPS', @name='Jewish Publication Society of America Version', @lang='eng', @year=1917, @hebrew='MAS', @license=1, @level=10.00
-EXEC add_Version @code='RSV', @name='Revised Standard Version', @lang='eng', @year=1952, @hebrew='MAS', @greek='AX', @license=7, @level=12.00
-EXEC add_Version @code='AMP', @name='Amplified Bible, The', @lang='eng', @year=1965, @hebrew='MAS', @greek='AX', @license=7, @level=11.00
+EXEC add_Version @code='RSV', @name='Revised Standard Version', @lang='eng', @year=1952, @parent='ASV', @hebrew='MAS', @greek='AX', @license=7, @level=12.00
+EXEC add_Version @code='AMP', @name='Amplified Bible, The', @lang='eng', @year=1965, @parent='ASV', @hebrew='MAS', @greek='AX', @license=7, @level=11.00
 EXEC add_Version @code='BBE', @name='Bible in Basic English', @lang='eng', @year=1965, @license=1
 EXEC add_Version @code='UBS', @name='United Bible Societies’s Greek New Testament', @lang='grc', @year=1966, @greek='AX', @license=11
-EXEC add_Version @code='BHS', @name='Biblia Hebraica Stuttgartensia', @lang='hbo', @year=1968, @hebrew='MAS'
+EXEC add_Version @code='BHS', @name='Biblia Hebraica Stuttgartensia', @lang='hbo', @year=1968, @parent='BHK', @hebrew='MAS'
 EXEC add_Version @code='NAB', @name='New American Bible', @lang='eng', @year=1970, @hebrew='MAS', @greek='AX', @license=7, @level=9.00
-EXEC add_Version @code='NASB', @name='New American Standard Bible', @lang='eng', @year=1971, @hebrew='MAS', @greek='AX', @license=7, @level=11.00
-EXEC add_Version @code='TLB', @name='Living Bible, The', @lang='eng', @year=1971, @hebrew='MAS', @greek='AX', @license=7, @level=4.00
+EXEC add_Version @code='NASB', @name='New American Standard Bible', @lang='eng', @year=1971, @parent='ASV', @hebrew='MAS', @greek='AX', @license=7, @level=11.00
+EXEC add_Version @code='TLB', @name='Living Bible, The', @lang='eng', @year=1971, @parent='ASV', @hebrew='MAS', @greek='AX', @license=7, @level=4.00
 EXEC add_Version @code='NIV', @name='New International Version', @lang='eng', @year=1978, @hebrew='MAS', @greek='AX', @license=7, @level=7.80
 EXEC add_Version @code='EVD', @name='English Version for the Deaf', @lang='eng', @year=1978, @hebrew='MAS', @greek='AX', @license=7, @level=3.00
 EXEC add_Version @code='GNTMT', @name='Greek New Testament According to the Majority Text, The', @lang='grc', @year=1982, @sub='Zane C. Hodges and Arthur L. Farstad', @greek='BYZ'
-EXEC add_Version @code='NKJV', @name='New King James Version', @lang='eng', @year=1982, @hebrew='MAS', @greek='TRG', @license=7, @level=7.00
-EXEC add_Version @code='ICB', @name='International Children’s Bible', @lang='eng', @year=1986, @hebrew='MAS', @greek='AX', @license=7, @level=3.00
-EXEC add_Version @code='NCV', @name='New Century Version', @lang='eng', @year=1987, @hebrew='MAS', @greek='AX', @license=7, @level=5.00
-EXEC add_Version @code='ERVE', @name='Easy-to-Read Version', @lang='eng', @year=1987, @hebrew='MAS', @greek='AX', @license=7, @level=3.00
+EXEC add_Version @code='NKJV', @name='New King James Version', @lang='eng', @year=1982, @parent='KJV', @hebrew='MAS', @greek='TRG', @license=7, @level=7.00
+EXEC add_Version @code='ICB', @name='International Children’s Bible', @lang='eng', @year=1986, @parent='ERVE', @hebrew='MAS', @greek='AX', @license=7, @level=3.00
+EXEC add_Version @code='NCV', @name='New Century Version', @lang='eng', @year=1987, @parent='ICB', @hebrew='MAS', @greek='AX', @license=7, @level=5.00
+EXEC add_Version @code='ERVE', @name='Easy-to-Read Version', @lang='eng', @year=1987, @parent='EVD', @hebrew='MAS', @greek='AX', @license=7, @level=3.00
 EXEC add_Version @code='GNTBYZ', @name='New Testament in the Original Greek: Byzantine Textform, The', @lang='grc', @year=1991, @sub='Maurice A. Robinson and William G. Pierpont', @greek='BYZ', @license=1
 EXEC add_Version @code='CEV', @name='Contemporary English Version', @lang='eng', @year=1995, @license=7
-EXEC add_Version @code='NLT', @name='New Living Translation', @lang='eng', @year=1996, @hebrew='MAS', @greek='AX', @license=7, @level=6.00
-EXEC add_Version @code='NIrV', @name='New International Reader’s Version', @lang='eng', @year=1996, @hebrew='MAS', @greek='AX', @license=7, @level=3.00
+EXEC add_Version @code='NLT', @name='New Living Translation', @lang='eng', @year=1996, @parent='TLB', @hebrew='MAS', @greek='AX', @license=7, @level=6.00
+EXEC add_Version @code='NIrV', @name='New International Reader’s Version', @lang='eng', @year=1996, @parent='NIV', @hebrew='MAS', @greek='AX', @license=7, @level=3.00
 EXEC add_Version @code='NVI', @name='Nueva Versión Internacional', @lang='esp', @year=1999, @hebrew='MAS', @greek='AX', @license=7
 EXEC add_Version @code='AKJV', @name='American King James Version', @lang='eng', @year=1999
-EXEC add_Version @code='WEB', @name='World English Bible', @lang='eng', @year=2000, @hebrew='MAS', @greek='BYZ', @license=1, @level=11.00
-EXEC add_Version @code='ESV', @name='English Standard Version', @lang='eng', @year=2001, @hebrew='MAS', @greek='AX', @license=7, @level=8.00
+EXEC add_Version @code='WEB', @name='World English Bible', @lang='eng', @year=2000, @parent='ASV', @hebrew='MAS', @greek='BYZ', @license=1, @level=11.00
+EXEC add_Version @code='ESV', @name='English Standard Version', @lang='eng', @year=2001, @parent='RSV', @hebrew='MAS', @greek='AX', @license=7, @level=8.00
 EXEC add_Version @code='NET', @name='New English Translation', @lang='eng', @year=2001, @hebrew='MAS', @greek='AX', @license=6, @level=7.00
 EXEC add_Version @code='MSG', @name='Message, The', @lang='eng', @year=2002, @license=7, @level=5.00
 EXEC add_Version @code='EMTV', @name='English Majority Text Version', @lang='eng', @year=2003, @greek='BYZ', @license=4
 EXEC add_Version @code='HCSB', @name='Holman Christian Standard Bible', @lang='eng', @year=2004, @hebrew='MAS', @greek='AX', @license=7, @level=7.00
-EXEC add_Version @code='TNIV', @name='Today’s New International Version', @lang='eng', @year=2005, @hebrew='MAS', @greek='AX', @license=7, @level=7.80
+EXEC add_Version @code='TNIV', @name='Today’s New International Version', @lang='eng', @year=2005, @parent='NIV', @hebrew='MAS', @greek='AX', @license=7, @level=7.80
 EXEC add_Version @code='ISV', @name='International Standard Version', @lang='eng', @year=2011, @hebrew='MAS', @greek='AX', @license=9, @level=7.00
 EXEC add_Version @code='LEB', @name='Lexham English Bible', @lang='eng', @year=2011, @greek='AX', @license=6, @level=11.00
 EXEC add_Version @code='CEB', @name='Common English Bible', @lang='eng', @year=2011, @hebrew='MAS', @greek='AX', @license=7, @level=7.00
 EXEC add_Version @code='VOC', @name='Voice, The', @lang='eng', @year=2012, @license=7, @level=6.00
 EXEC add_Version @code='MEV', @name='Modern English Version', @lang='eng', @year=2014, @hebrew='MAS', @greek='TRG', @license=7
 EXEC add_Version @code='BIB', @name='Berean Interlinear Bible', @lang='eng', @year=2016, @hebrew='MAS', @greek='AX', @license=6
-EXEC add_Version @code='BSB', @name='Berean Standard Bible', @lang='eng', @year=2016, @hebrew='MAS', @greek='AX', @license=6
-EXEC add_Version @code='Pickering', @name='Sovereign Creator Has Spoken, The', @lang='eng', @year=2016, @sub='Objective Authority for Living: The New Testament Translation with Commentary', @greek='F35', @license=3
-EXEC add_Version @code='CSB', @name='Christian Standard Bible', @lang='eng', @year=2017, @hebrew='MAS', @greek='AX', @license=7, @level=7.00
+EXEC add_Version @code='BSB', @name='Berean Standard Bible', @lang='eng', @year=2016, @parent='BIB', @hebrew='MAS', @greek='AX', @license=6
+EXEC add_Version @code='F35', @name='Sovereign Creator Has Spoken, The', @lang='eng', @year=2016, @parent='GNTF35', @sub='Objective Authority for Living: The New Testament Translation with Commentary', @greek='F35', @license=3
+EXEC add_Version @code='CSB', @name='Christian Standard Bible', @lang='eng', @year=2017, @parent='HCSB', @hebrew='MAS', @greek='AX', @license=7, @level=7.00
 EXEC add_Version @code='FBV', @name='Free Bible Version', @lang='eng', @year=2018, @license=5
 EXEC add_Version @code='GNTF35', @name='Greek New Testament According to Family 35, The', @lang='grc', @year=2020, @greek='F35'
-EXEC add_Version @code='LSV', @name='Literal Standard Version', @lang='eng', @year=2020, @hebrew='MAS', @greek='TRG', @license=4, @level=10.00
-EXEC add_Version @code='LSB', @name='Legacy Standard Bible', @lang='eng', @year=2021, @hebrew='MAS', @greek='AX', @license=7, @level=11.00
-EXEC add_Version @code='ASVBT', @name='American Standard Version Byzantine Text', @lang='eng', @year=2021, @hebrew='MAS', @greek='BYZ', @license=1
-EXEC add_Version @code='TCENT', @name='Text-Critical English New Testament, The', @lang='eng', @year=2021, @sub='Byzantine Text Version', @greek='AX', @license=12
-EXEC add_Version @code='MSB', @name='Majority Standard Bible', @lang='eng', @year=2022, @hebrew='MAS', @greek='BYZ', @license=1
+EXEC add_Version @code='LSV', @name='Literal Standard Version', @lang='eng', @year=2020, @parent='YLT', @hebrew='MAS', @greek='TRG', @license=4, @level=10.00
+EXEC add_Version @code='LSB', @name='Legacy Standard Bible', @lang='eng', @year=2021, @parent='NASB', @hebrew='MAS', @greek='AX', @license=7, @level=11.00
+EXEC add_Version @code='ASVBT', @name='American Standard Version Byzantine Text', @lang='eng', @year=2021, @parent='ASV', @hebrew='MAS', @greek='BYZ', @license=1
+EXEC add_Version @code='TCENT', @name='Text-Critical English New Testament, The', @lang='eng', @year=2021, @parent='GNTBYZ', @sub='Byzantine Text Version', @greek='AX', @license=12
+EXEC add_Version @code='MSB', @name='Majority Standard Bible', @lang='eng', @year=2022, @parent='BSB', @hebrew='MAS', @greek='BYZ', @license=1
 
 ----------------------------------------------------------------------------
 -- Editions
