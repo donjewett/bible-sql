@@ -61,7 +61,7 @@ EXEC add_Version @code='VOC', @name='Voice, The', @lang='eng', @year=2012, @lice
 EXEC add_Version @code='MEV', @name='Modern English Version', @lang='eng', @year=2014, @hebrew='MAS', @greek='TRG', @license=7
 EXEC add_Version @code='BIB', @name='Berean Interlinear Bible', @lang='eng', @year=2016, @hebrew='MAS', @greek='AX', @license=6
 EXEC add_Version @code='BSB', @name='Berean Standard Bible', @lang='eng', @year=2016, @parent='BIB', @hebrew='MAS', @greek='AX', @license=6
-EXEC add_Version @code='F35', @name='Sovereign Creator Has Spoken, The', @lang='eng', @year=2016, @parent='GNTF35', @sub='Objective Authority for Living: The New Testament Translation with Commentary', @greek='F35', @license=3
+EXEC add_Version @code='Pickering', @name='Sovereign Creator Has Spoken, The', @lang='eng', @year=2016, @parent='GNTF35', @sub='Objective Authority for Living: The New Testament Translation with Commentary', @greek='F35', @license=3
 EXEC add_Version @code='CSB', @name='Christian Standard Bible', @lang='eng', @year=2017, @parent='HCSB', @hebrew='MAS', @greek='AX', @license=7, @level=7.00
 EXEC add_Version @code='FBV', @name='Free Bible Version', @lang='eng', @year=2018, @license=5
 EXEC add_Version @code='GNTF35', @name='Greek New Testament According to Family 35, The', @lang='grc', @year=2020, @greek='F35'
