@@ -4,7 +4,7 @@
 *
 * bible-200-xrefs.sql
 *
-* Version: 2024.8.23
+* Version: 2024.8.24
 * 
 * Module: Cross References
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
@@ -58,8 +58,6 @@ CREATE PROCEDURE add_XRef
 	@w int = NULL
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
 	IF NOT EXISTS (SELECT * FROM [CrossReferences] WHERE [VerseId] = @v1 AND [RefId] = @v2)
