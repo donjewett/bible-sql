@@ -2,7 +2,7 @@
 * Bible Database: SQL Server, by Don Jewett 
 * https://github.com/donjewett/bible-sql
 *
-* bible-120-tcent.sql
+* bible-110-tcent.sql
 *
 * Version: 2024.8.22
 * 
