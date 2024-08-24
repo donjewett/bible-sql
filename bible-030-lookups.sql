@@ -4,7 +4,7 @@
 * 
 * bible-030-lookups.sql
 *
-* Version: 2024.8.23
+* Version: 2024.8.24
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
@@ -18,6 +18,13 @@ EXEC add_Language @id='grc', @name='Ancient Greek', @html='el', @ancient=1
 EXEC add_Language @id='arc', @name='Ancient Aramaic', @html='he', @ancient=1
 EXEC add_Language @id='eng', @name='English', @html='en', @ancient=0
 EXEC add_Language @id='esp', @name='Spanish', @html='es', @ancient=0
+
+
+----------------------------------------------------------------------------
+-- Canons
+----------------------------------------------------------------------------
+EXEC add_Canon @id=100000000, @code='OT', @name='Old Testament', @lang='hbo'
+EXEC add_Canon @id=300000000, @code='NT', @name='New Testament', @lang='grc'
 
 
 ----------------------------------------------------------------------------
@@ -94,13 +101,6 @@ EXEC add_Section @id=344000000, @name='Acts', @canonId=300000000
 EXEC add_Section @id=345000000, @name='Pauline Epistles', @canonId=300000000
 EXEC add_Section @id=358000000, @name='General Epistles', @canonId=300000000
 EXEC add_Section @id=366000000, @name='Revelation', @canonId=300000000
-
-
-----------------------------------------------------------------------------
--- Canons
-----------------------------------------------------------------------------
-EXEC add_Canon @id=100000000, @code='OT', @name='Old Testament', @lang='hbo'
-EXEC add_Canon @id=300000000, @code='NT', @name='New Testament', @lang='grc'
 
 
 ----------------------------------------------------------------------------
