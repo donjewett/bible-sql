@@ -2,7 +2,7 @@
 * Bible Database: SQL Server, by Don Jewett 
 * https://github.com/donjewett/bible-sql
 *
-* bible-120-pickering.sql
+* bible-110-pickering.sql
 *
 * Version: 2024.8.22
 * 
