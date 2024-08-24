@@ -4,7 +4,7 @@
 *
 * bible-220-sales.sql
 *
-* Version: 2024.8.22
+* Version: 2024.8.23
 * 
 * Module: Sales Stats
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
@@ -71,7 +71,7 @@ GO
 EXEC add_Version @code='KJV', @name='King James Version', @lang='eng', @year=1611, @hebrew='MAS', @greek='TRG', @license=2
 EXEC add_Version @code='RV', @name='Revised Version', @lang='eng', @year=1885, @parent='KJV', @hebrew='MAS', @greek='AX', @license=1
 EXEC add_Version @code='NRSV', @name='New Revised Standard Version', @lang='eng', @year=1889, @parent='RSV', @hebrew='MAS', @greek='AX', @license=7, @level=11.00
-EXEC add_Version @code='NA', @name='Novum Testamentum Graece', @lang='grc', @year=1898, @sub='(Nestle-Aland GNT)', @greek='AX', @license=11
+EXEC add_Version @code='ASV', @name='American Standard Version', @lang='eng', @year=1901, @parent='RV', @hebrew='MAS', @greek='AX', @license=1
 EXEC add_Version @code='RSV', @name='Revised Standard Version', @lang='eng', @year=1952, @parent='ASV', @hebrew='MAS', @greek='AX', @license=7, @level=12.00
 EXEC add_Version @code='AMP', @name='Amplified Bible, The', @lang='eng', @year=1965, @parent='ASV', @hebrew='MAS', @greek='AX', @license=7, @level=11.00
 EXEC add_Version @code='NAB', @name='New American Bible', @lang='eng', @year=1970, @hebrew='MAS', @greek='AX', @license=7, @level=9.00
