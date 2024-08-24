@@ -4,7 +4,7 @@
 * 
 * bible-030-lookups.sql
 *
-* Version: 2024.8.22
+* Version: 2024.8.23
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
