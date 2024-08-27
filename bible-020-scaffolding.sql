@@ -4,7 +4,7 @@
 *
 * bible-020-scaffolding.sql
 *
-* Version: 2024.8.22
+* Version: 2024.8.27
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 * 
@@ -471,7 +471,7 @@ BEGIN
 	SET @id = (SELECT [Id] FROM Editions WHERE [Code] = @code)
 	IF @id IS NULL
 	BEGIN
-		INSERT INTO [Editions]([Code], [VersionId], [YearPublished]) VALUES (@code, @versionId, @year)
+		INSERT INTO [Editions]([Code], [VersionId], [YearPublished], [Subtitle]) VALUES (@code, @versionId, @year, @sub)
 		SET @id = SCOPE_IDENTITY()
 	END
 
@@ -512,9 +512,11 @@ BEGIN
 	SET @id = (SELECT [Id] FROM Bibles WHERE [Code] = @code)
 	IF @id IS NULL
 	BEGIN
-		INSERT INTO Bibles ([Code], [VersionId], [EditionId], [Name], [YearPublished]) VALUES (@code, @versionId, @editionId, @name, @year)
+		INSERT INTO Bibles ([Code], [VersionId], [EditionId], [Name], [YearPublished], [Subtitle]) VALUES (@code, @versionId, @editionId, @name, @year, @sub)
 		SET @id = SCOPE_IDENTITY()
 	END
+
+	UPDATE Bibles SET [Subtitle] = @sub WHERE [Id] = @id AND @sub IS NOT NULL AND [Subtitle] IS NULL
 
 	IF @sourceUrl IS NOT NULL EXEC add_Resource @version=@version, @edition=@edition, @type='file', @url=@sourceUrl
 	
