@@ -4,7 +4,7 @@
 *
 * bible-220-sales.sql
 *
-* Version: 2024.8.23
+* Version: 2024.8.27
 * 
 * Module: Sales Stats
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
@@ -55,6 +55,7 @@ CREATE PROCEDURE add_SalesStat
 
 AS
 BEGIN
+	SET NOCOUNT ON;
 
 	DECLARE @versionId int = (SELECT [Id] FROM [Versions] WHERE [Code] = @version)
 	
