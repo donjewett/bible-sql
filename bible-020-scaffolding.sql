@@ -4,7 +4,7 @@
 *
 * bible-020-scaffolding.sql
 *
-* Version: 2024.8.27
+* Version: 2024.9.12
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 * 
@@ -535,6 +535,8 @@ CREATE PROCEDURE add_BibleVerse
 	@bibleId int, 
 	@verseId int,
 	@markup nvarchar(max),
+	@notes nvarchar(255) = NULL,
+	@heading nvarchar(255) = NULL,
 	@id int = NULL OUTPUT
 AS
 BEGIN
@@ -543,7 +545,7 @@ BEGIN
 	SET @id = (SELECT [Id] FROM BibleVerses WHERE [BibleId] = @bibleId AND [VerseId] = @verseId)
 	IF @id IS NULL
 	BEGIN
-		INSERT INTO BibleVerses ([BibleId], [VerseId], [Markup]) VALUES (@bibleId, @verseId, @markup)
+		INSERT INTO BibleVerses ([BibleId], [VerseId], [Markup], [Heading], [Notes]) VALUES (@bibleId, @verseId, @markup, @heading, @notes)
 		SET @id = SCOPE_IDENTITY()
 	END
 END
@@ -570,8 +572,10 @@ BEGIN
 	
 	DECLARE @bookId int = (SELECT [Id] FROM Books WHERE @book IN ([Name], [Code], [Abbrev], [OsisCode], [ParaText], CONVERT(varchar(3),[Book])))
 
-	IF @bookId IS NULL SET @bookId = (SELECT [BookId] FROM BookNames WHERE [Name] = @book)
+	IF @bookId IS NULL SET @bookId = (SELECT [BookId] FROM BookNames WHERE [Name] = @book);
 
+	If @bookId IS NULL THROW 51000, 'Book cannot be found', 1;
+	
 	DECLARE @verseId int = (SELECT [Id] FROM Verses WHERE [BookId] = @bookId AND [Chapter] = @chapter AND [Verse] = @verse)
 	EXEC add_BibleVerse @bibleId=@bibleId, @verseId=@verseId, @markup=@markup, @id=@id OUTPUT
 

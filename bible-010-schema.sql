@@ -4,7 +4,7 @@
 *
 * bible-010-schema.sql
 *
-* Version: 2024.8.22
+* Version: 2024.9.12
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
@@ -434,6 +434,8 @@ CREATE TABLE [BibleVerses](
 	[BibleId] [int] NOT NULL,
 	[VerseId] [int] NOT NULL,
 	[Markup] [nvarchar](max) NOT NULL,
+	[Heading] [nvarchar](255) NULL,
+	[Notes] [nvarchar](255) NULL,
  CONSTRAINT [PK_BibleVerses] PRIMARY KEY CLUSTERED ([Id] ASC)
 )
 GO

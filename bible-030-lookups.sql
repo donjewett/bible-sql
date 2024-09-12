@@ -4,7 +4,7 @@
 * 
 * bible-030-lookups.sql
 *
-* Version: 2024.8.24
+* Version: 2024.9.12
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
@@ -18,13 +18,6 @@ EXEC add_Language @id='grc', @name='Ancient Greek', @html='el', @ancient=1
 EXEC add_Language @id='arc', @name='Ancient Aramaic', @html='he', @ancient=1
 EXEC add_Language @id='eng', @name='English', @html='en', @ancient=0
 EXEC add_Language @id='esp', @name='Spanish', @html='es', @ancient=0
-
-
-----------------------------------------------------------------------------
--- Canons
-----------------------------------------------------------------------------
-EXEC add_Canon @id=100000000, @code='OT', @name='Old Testament', @lang='hbo'
-EXEC add_Canon @id=300000000, @code='NT', @name='New Testament', @lang='grc'
 
 
 ----------------------------------------------------------------------------
@@ -86,6 +79,13 @@ EXEC add_ResourceType @id='file', @name='Bible File'
 EXEC add_ResourceType @id='license', @name='Bible License'
 EXEC add_ResourceType @id='read', @name='Bible Browser'
 EXEC add_ResourceType @id='version', @name='Bible Version'
+
+
+----------------------------------------------------------------------------
+-- Canons
+----------------------------------------------------------------------------
+EXEC add_Canon @id=100000000, @code='OT', @name='Old Testament', @lang='hbo'
+EXEC add_Canon @id=300000000, @code='NT', @name='New Testament', @lang='grc'
 
 
 ----------------------------------------------------------------------------
@@ -200,6 +200,7 @@ EXEC add_BookName @name='1pe',@bookId=360000000
 EXEC add_BookName @name='1pet',@bookId=360000000
 EXEC add_BookName @name='1sa',@bookId=109000000
 EXEC add_BookName @name='1sam',@bookId=109000000
+EXEC add_BookName @name='1sm',@bookId=109000000
 EXEC add_BookName @name='1th',@bookId=352000000
 EXEC add_BookName @name='1thess',@bookId=352000000
 EXEC add_BookName @name='1ti',@bookId=354000000
@@ -227,6 +228,7 @@ EXEC add_BookName @name='2pe',@bookId=361000000
 EXEC add_BookName @name='2pet',@bookId=361000000
 EXEC add_BookName @name='2sa',@bookId=110000000
 EXEC add_BookName @name='2sam',@bookId=110000000
+EXEC add_BookName @name='2sm',@bookId=110000000
 EXEC add_BookName @name='2th',@bookId=353000000
 EXEC add_BookName @name='2thess',@bookId=353000000
 EXEC add_BookName @name='2ti',@bookId=355000000
@@ -330,6 +332,7 @@ EXEC add_BookName @name='josh',@bookId=106000000
 EXEC add_BookName @name='joshua',@bookId=106000000
 EXEC add_BookName @name='jud',@bookId=365000000
 EXEC add_BookName @name='jude',@bookId=365000000
+EXEC add_BookName @name='jdgs',@bookId=107000000
 EXEC add_BookName @name='judg',@bookId=107000000
 EXEC add_BookName @name='judges',@bookId=107000000
 EXEC add_BookName @name='la',@bookId=125000000
@@ -372,11 +375,13 @@ EXEC add_BookName @name='philemon',@bookId=357000000
 EXEC add_BookName @name='philippians',@bookId=350000000
 EXEC add_BookName @name='phlm',@bookId=357000000
 EXEC add_BookName @name='phm',@bookId=357000000
+EXEC add_BookName @name='phmn',@bookId=357000000
 EXEC add_BookName @name='php',@bookId=350000000
 EXEC add_BookName @name='pr',@bookId=120000000
 EXEC add_BookName @name='pro',@bookId=120000000
 EXEC add_BookName @name='prov',@bookId=120000000
 EXEC add_BookName @name='proverbs',@bookId=120000000
+EXEC add_BookName @name='prv',@bookId=120000000
 EXEC add_BookName @name='ps',@bookId=119000000
 EXEC add_BookName @name='psa',@bookId=119000000
 EXEC add_BookName @name='psalm',@bookId=119000000
