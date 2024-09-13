@@ -133,4 +133,9 @@ Additional tables are included for:
 - Text Forms (such as Alexandrian or Byzantine)
 - Resources (such as download links for original files)
 
+## Schema ##
+
+[Browseable schema document](https://htmlpreview.github.io/?https://raw.githubusercontent.com/donjewett/bible-sql/main/docs/bible-schema.htm)
+
+
 [updated 2024-09-12]
