@@ -10,7 +10,7 @@
 *
 ***************************************************************************/
 
--- Update Version 2024.22 to 2024.9.12
+-- Update Version 2024.8.22 to 2024.9.12
 
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='BibleVerses' AND COLUMN_NAME='Notes')
 	ALTER TABLE BibleVerses ADD Notes nvarchar(255)
