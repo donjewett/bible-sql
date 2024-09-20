@@ -4,7 +4,7 @@
 *
 * bible-220-sales.sql
 *
-* Version: 2024.8.27
+* Version: 2024.9.20
 * 
 * Module: Sales Stats
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
@@ -18,7 +18,7 @@
 ----------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'SalesStats')
 CREATE TABLE [SalesStats](
-	[StatId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[VersionId] [int] NOT NULL,
 	[Year] [smallint] NOT NULL,
 	[Month] [int] NOT NULL,
@@ -40,6 +40,17 @@ GO
 
 
 ----------------------------------------------------------------------------
+-- SalesStats
+----------------------------------------------------------------------------
+EXEC add_MetaDescription N'SalesStats', N'Id', N'Auto-incrementing Id'
+EXEC add_MetaDescription N'SalesStats', N'VersionId', N'Version of the Sales Stat'
+EXEC add_MetaDescription N'SalesStats', N'Year', N'Year of the Sales Stat'
+EXEC add_MetaDescription N'SalesStats', N'Month', N'Month of the Sales Stat'
+EXEC add_MetaDescription N'SalesStats', N'Ranking', N'Ranking of the Sales Stat'
+EXEC add_MetaDescription N'SalesStats', N'DatePartCode', N'Code representing the timeframe for Sales Stat'
+
+
+----------------------------------------------------------------------------
 -- add_SalesStat
 ----------------------------------------------------------------------------
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'add_SalesStat')
@@ -56,7 +67,7 @@ CREATE PROCEDURE add_SalesStat
 AS
 BEGIN
 	SET NOCOUNT ON;
-
+	
 	DECLARE @versionId int = (SELECT [Id] FROM [Versions] WHERE [Code] = @version)
 	
 	IF NOT EXISTS (SELECT * FROM [SalesStats] WHERE [VersionId] = @versionId AND [Year] = @year AND [Month] = @month)

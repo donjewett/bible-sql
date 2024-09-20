@@ -46,6 +46,15 @@ CREATE UNIQUE NONCLUSTERED INDEX [UQ_CrossReferences_Verses] ON [CrossReferences
 
 
 ----------------------------------------------------------------------------
+-- CrossReferences
+----------------------------------------------------------------------------
+EXEC add_MetaDescription N'CrossReferences', N'Id', N'Auto-incrementing Id'
+EXEC add_MetaDescription N'CrossReferences', N'VerseId', N'Verse of the cross reference'
+EXEC add_MetaDescription N'CrossReferences', N'RefId', N'Cross Reference of the cross reference'
+EXEC add_MetaDescription N'CrossReferences', N'Weight', N'Weight of the cross reference -- to use for prioritization'
+
+
+----------------------------------------------------------------------------
 -- add_XRef
 ----------------------------------------------------------------------------
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'add_XRef')

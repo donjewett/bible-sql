@@ -4,7 +4,7 @@
 *
 * bible-015-descriptions.sql
 *
-* Version: 2024.9.12
+* Version: 2024.9.20
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
@@ -44,7 +44,7 @@ GO
 ----------------------------------------------------------------------------
 -- Languages
 ----------------------------------------------------------------------------
-EXEC add_MetaDescription N'Languages', N'Id', N'Three character ISO 693-1 code.'
+EXEC add_MetaDescription N'Languages', N'Id', N'Three character ISO 693-1 code'
 EXEC add_MetaDescription N'Languages', N'Name', N'Name of the Language in English'
 EXEC add_MetaDescription N'Languages', N'HtmlCode', N'Two character html code for Language'
 EXEC add_MetaDescription N'Languages', N'IsAncient', N'This language or dialect has been extinct since ancient times'
@@ -99,7 +99,7 @@ EXEC add_MetaDescription N'Chapters', N'Reference', N'Human readable reference u
 EXEC add_MetaDescription N'Chapters', N'Chapter', N'Chapter number'
 EXEC add_MetaDescription N'Chapters', N'BookId', N'Book of the Chapter'
 EXEC add_MetaDescription N'Chapters', N'IsBookEnd', N'Is the final Chapter in the Book'
-EXEC add_MetaDescription N'Chapters', N'VerseCount', N''
+EXEC add_MetaDescription N'Chapters', N'VerseCount', N'Count of verses in the Chapter'
 
 
 ----------------------------------------------------------------------------
@@ -148,22 +148,22 @@ EXEC add_MetaDescription N'LicensePermissions', N'Permissiveness', N'Permissiven
 ----------------------------------------------------------------------------
 EXEC add_MetaDescription N'LicenseTypes', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'LicenseTypes', N'Name', N'Name of the License Type'
-EXEC add_MetaDescription N'LicenseTypes', N'IsFree', N'True for licences allowing free quotation. False for commercial restricting use.'
-EXEC add_MetaDescription N'LicenseTypes', N'PermissionId', N''
+EXEC add_MetaDescription N'LicenseTypes', N'IsFree', N'True for licences allowing free quotation -- false for commercial restricting use'
+EXEC add_MetaDescription N'LicenseTypes', N'PermissionId', N'Permissiveness for License Type'
 
 
 ----------------------------------------------------------------------------
 -- Versions
 ----------------------------------------------------------------------------
 EXEC add_MetaDescription N'Versions', N'Id', N'Auto-incrementing Id'
-EXEC add_MetaDescription N'Versions', N'Code', N'Version Code used for lookups. Must be unique.'
+EXEC add_MetaDescription N'Versions', N'Code', N'Version Code used for lookups. Must be unique'
 EXEC add_MetaDescription N'Versions', N'Name', N'Name of the Version'
 EXEC add_MetaDescription N'Versions', N'Subtitle', N'Optional Subtitle for the version'
 EXEC add_MetaDescription N'Versions', N'LanguageId', N'Language of the Version'
 EXEC add_MetaDescription N'Versions', N'YearPublished', N'Year first published in entirety'
 EXEC add_MetaDescription N'Versions', N'HebrewFormId', N'Textual basis for the Old Testament'
 EXEC add_MetaDescription N'Versions', N'GreekFormId', N'Textual basis for the New Testament'
-EXEC add_MetaDescription N'Versions', N'ParentId', N'Optional Version this is derived from.'
+EXEC add_MetaDescription N'Versions', N'ParentId', N'Optional Version this is derived from'
 EXEC add_MetaDescription N'Versions', N'LicenseTypeId', N'Optional License Type'
 EXEC add_MetaDescription N'Versions', N'ReadingLevel', N'Reading Level using U.S. school grades (8.0 = Eighth Grade)'
 
@@ -172,7 +172,7 @@ EXEC add_MetaDescription N'Versions', N'ReadingLevel', N'Reading Level using U.S
 -- Editions
 ----------------------------------------------------------------------------
 EXEC add_MetaDescription N'Editions', N'Id', N'Auto-incrementing Id'
-EXEC add_MetaDescription N'Editions', N'Code', N'Edition Code used for lookups. Must be unique.'
+EXEC add_MetaDescription N'Editions', N'Code', N'Edition Code used for lookups. Must be unique'
 EXEC add_MetaDescription N'Editions', N'VersionId', N'Version of the Edition'
 EXEC add_MetaDescription N'Editions', N'YearPublished', N'Year the Edition was first published in its entirety'
 EXEC add_MetaDescription N'Editions', N'Subtitle', N'Subtitle for the Edition, esp. if different than Version (i.e. Second Edition)'
@@ -216,6 +216,7 @@ EXEC add_MetaDescription N'Bibles', N'VersionId', N'Version of this Bible'
 EXEC add_MetaDescription N'Bibles', N'EditionId', N'Optional Edition of this Bible'
 EXEC add_MetaDescription N'Bibles', N'YearPublished', N'Year this Bible (or Edition) was published'
 EXEC add_MetaDescription N'Bibles', N'TextFormat', N'Code for the format of the Content'
+EXEC add_MetaDescription N'Bibles', N'SourceId', N'Optional source Resource of this Bible'
 
 
 ----------------------------------------------------------------------------
@@ -225,7 +226,7 @@ EXEC add_MetaDescription N'BibleVerses', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'BibleVerses', N'BibleId', N'The Bible for this Content'
 EXEC add_MetaDescription N'BibleVerses', N'VerseId', N'The Verse for this Content'
 EXEC add_MetaDescription N'BibleVerses', N'Markup', N'The Content of the Bible Verse'
-EXEC add_MetaDescription N'BibleVerses', N'Heading', N'Optional Heading for the Bible Verse. Noncanonical Headings should be placed in [square brackets].'
+EXEC add_MetaDescription N'BibleVerses', N'Heading', N'Optional Heading for the Bible Verse. Noncanonical Headings should be placed in [square brackets]'
 EXEC add_MetaDescription N'BibleVerses', N'Notes', N'Optional Notes for the Bible Verse'
 
 
@@ -234,12 +235,12 @@ EXEC add_MetaDescription N'BibleVerses', N'Notes', N'Optional Notes for the Bibl
 ----------------------------------------------------------------------------
 EXEC add_MetaDescription N'VersionNotes', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'VersionNotes', N'VersionId', N'Version for this Note'
-EXEC add_MetaDescription N'VersionNotes', N'EditionId', N'Optional Edition for this Note. For notes specific to an Edition'
-EXEC add_MetaDescription N'VersionNotes', N'BibleId', N'Optional Bible for this Note. For notes specific to a Bible'
-EXEC add_MetaDescription N'VersionNotes', N'CanonId', N'Optional Canon for this Note. For notes that apply to the Canon as a whole'
-EXEC add_MetaDescription N'VersionNotes', N'BookId', N'Optional Book for this Note. For notes that apply to the Book as a whole'
-EXEC add_MetaDescription N'VersionNotes', N'ChapterId', N'Optional Chapter for this Note. For notes that apply to the Chapter as a whole'
-EXEC add_MetaDescription N'VersionNotes', N'VerseId', N'Optional Verse for this Note. For notes that apply to the Verse. Use BibleVerses.Notes for short notes.'
+EXEC add_MetaDescription N'VersionNotes', N'EditionId', N'Optional Edition for this Note -- for notes specific to an Edition'
+EXEC add_MetaDescription N'VersionNotes', N'BibleId', N'Optional Bible for this Note -- for notes specific to a Bible'
+EXEC add_MetaDescription N'VersionNotes', N'CanonId', N'Optional Canon for this Note -- for notes that apply to the Canon as a whole'
+EXEC add_MetaDescription N'VersionNotes', N'BookId', N'Optional Book for this Note -- for notes that apply to the Book as a whole'
+EXEC add_MetaDescription N'VersionNotes', N'ChapterId', N'Optional Chapter for this Note -- for notes that apply to the Chapter as a whole'
+EXEC add_MetaDescription N'VersionNotes', N'VerseId', N'Optional Verse for this Note -- for notes that apply to the Verse. Use BibleVerses.Notes for short notes'
 EXEC add_MetaDescription N'VersionNotes', N'Note', N'Content of the Note'
 EXEC add_MetaDescription N'VersionNotes', N'Label', N'Optional Label for the Note'
 EXEC add_MetaDescription N'VersionNotes', N'Ranking', N'Weight (Descending Sort Order) of the Note'
