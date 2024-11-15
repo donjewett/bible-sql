@@ -1,6 +1,14 @@
 # bible-sql
 Bible database for SQL Server
 
+## Flavors ##
+
+- [SQL Server](https://github.com/donjewett/bible-sql/)
+- [MySQL/MariaDB](https://github.com/donjewett/bible-sql-mysql/)
+- [PostgreSQL](https://github.com/donjewett/bible-sql-postgresql/)
+- [SQLite](https://github.com/donjewett/bible-sql-sqlite/)
+- [Firebird](https://github.com/donjewett/bible-sql-firebird/)
+
 ## Organization ##
 Bible tables are arranged in a hierarchy:
 
@@ -137,5 +145,4 @@ Additional tables are included for:
 
 [Browseable schema document](https://htmlpreview.github.io/?https://raw.githubusercontent.com/donjewett/bible-sql/main/docs/bible-schema.htm)
 
-
-[updated 2024-09-12]
+[updated 2024-10-15]
