@@ -2,7 +2,7 @@
 * Bible Database: SQL Server
 * https://github.com/donjewett/bible-sql
 *
-* bible-020-scaffolding.sql
+* bible-030-scaffolding.sql
 *
 * Version: 2024.9.12
 * 
