@@ -1,5 +1,5 @@
-/***************************************************************************
-* Bible Database: SQL Server
+/* *************************************************************************
+* Bible Database: SQL Server, by Don Jewett
 * https://github.com/donjewett/bible-sql
 *
 * bible-015-descriptions.sql
@@ -8,12 +8,12 @@
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
-***************************************************************************/
+************************************************************************* */
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- add_MetaDescription
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'add_MetaDescription') 
 	DROP PROCEDURE add_MetaDescription
 GO
@@ -41,35 +41,35 @@ BEGIN
 END
 GO
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Languages
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Languages', N'Id', N'Three character ISO 693-1 code'
 EXEC add_MetaDescription N'Languages', N'Name', N'Name of the Language in English'
 EXEC add_MetaDescription N'Languages', N'HtmlCode', N'Two character html code for Language'
 EXEC add_MetaDescription N'Languages', N'IsAncient', N'This language or dialect has been extinct since ancient times'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Canons
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Canons', N'Id', N'Canon Id following bible-sql numbering scheme'
 EXEC add_MetaDescription N'Canons', N'Code', N'Short code following Protestant tradition'
 EXEC add_MetaDescription N'Canons', N'Name', N'Name following Protestant tradition'
 EXEC add_MetaDescription N'Canons', N'LanguageId', N'Primary Language of the Canon'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Sections
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Sections', N'Id', N'Section Id following bible-sql numbering scheme'
 EXEC add_MetaDescription N'Sections', N'Name', N'Name of the Section following Protestant tradition'
 EXEC add_MetaDescription N'Sections', N'CanonId', N'Canon of the Bible Section'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Books
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Books', N'Id', N'Book Id following bible-sql numbering scheme'
 EXEC add_MetaDescription N'Books', N'Code', N'Short url-friendly lowercase Code for Book'
 EXEC add_MetaDescription N'Books', N'Abbrev', N'Short Proper case abbreviation for Book'
@@ -83,16 +83,16 @@ EXEC add_MetaDescription N'Books', N'OsisCode', N'Osis code for the Book'
 EXEC add_MetaDescription N'Books', N'Paratext', N'Paratext code for the Book'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- BookNames
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'BookNames', N'Name', N'Altername name or code for Book'
 EXEC add_MetaDescription N'BookNames', N'BookId', N'Book Id following bible-sql numbering scheme'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Chapters
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Chapters', N'Id', N'Chapter Id following bible-sql numbering scheme'
 EXEC add_MetaDescription N'Chapters', N'Code', N'Short, url-friendly lowercase Code for chapter'
 EXEC add_MetaDescription N'Chapters', N'Reference', N'Human readable reference using Book Abbrev and Chapter number'
@@ -102,9 +102,9 @@ EXEC add_MetaDescription N'Chapters', N'IsBookEnd', N'Is the final Chapter in th
 EXEC add_MetaDescription N'Chapters', N'VerseCount', N'Count of verses in the Chapter'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Verses
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Verses', N'Id', N'Verse Id following bible-sql numbering scheme'
 EXEC add_MetaDescription N'Verses', N'Code', N'Short, url-friendly lowercase Code for verse'
 EXEC add_MetaDescription N'Verses', N'OsisCode', N'Osis code for the Verse'
@@ -119,42 +119,42 @@ EXEC add_MetaDescription N'Verses', N'Chapter', N'Chapter number' --denormalized
 EXEC add_MetaDescription N'Verses', N'Verse', N'Verse number'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- GreekTextForms
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'GreekTextForms', N'Id', N'One to three character code for Greek form'
 EXEC add_MetaDescription N'GreekTextForms', N'Name', N'Name of the Greek form'
 EXEC add_MetaDescription N'GreekTextForms', N'ParentId', N'The Greek form this one derives from'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- HebrewTextForms
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'HebrewTextForms', N'Id', N'One to three character code for Hebrew text'
 EXEC add_MetaDescription N'HebrewTextForms', N'Name', N'Name of the Hebrew form'
 EXEC add_MetaDescription N'HebrewTextForms', N'ParentId', N'The Hebrew form this one derives from'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- LicensePermissions
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'LicensePermissions', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'LicensePermissions', N'Name', N'Name of the Permission'
 EXEC add_MetaDescription N'LicensePermissions', N'Permissiveness', N'Permissiveness of license on a scale of 0 to 100'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- LicenseTypes
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'LicenseTypes', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'LicenseTypes', N'Name', N'Name of the License Type'
 EXEC add_MetaDescription N'LicenseTypes', N'IsFree', N'True for licences allowing free quotation -- false for commercial restricting use'
 EXEC add_MetaDescription N'LicenseTypes', N'PermissionId', N'Permissiveness for License Type'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Versions
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Versions', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'Versions', N'Code', N'Version Code used for lookups. Must be unique'
 EXEC add_MetaDescription N'Versions', N'Name', N'Name of the Version'
@@ -168,9 +168,9 @@ EXEC add_MetaDescription N'Versions', N'LicenseTypeId', N'Optional License Type'
 EXEC add_MetaDescription N'Versions', N'ReadingLevel', N'Reading Level using U.S. school grades (8.0 = Eighth Grade)'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Editions
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Editions', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'Editions', N'Code', N'Edition Code used for lookups. Must be unique'
 EXEC add_MetaDescription N'Editions', N'VersionId', N'Version of the Edition'
@@ -178,24 +178,24 @@ EXEC add_MetaDescription N'Editions', N'YearPublished', N'Year the Edition was f
 EXEC add_MetaDescription N'Editions', N'Subtitle', N'Subtitle for the Edition, esp. if different than Version (i.e. Second Edition)'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Sites
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Sites', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'Sites', N'Name', N'Site Name'
 EXEC add_MetaDescription N'Sites', N'Url', N'Site Url'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- ResourceTypes
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'ResourceTypes', N'Id', N'Eight character code'
 EXEC add_MetaDescription N'ResourceTypes', N'Name', N'Name of the Resource Type'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Resources
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Resources', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'Resources', N'ResourceTypeId', N'Eight character code for Resource Type'
 EXEC add_MetaDescription N'Resources', N'VersionId', N'Version of the Resource'
@@ -205,9 +205,9 @@ EXEC add_MetaDescription N'Resources', N'IsOfficial', N'True if the Resource is 
 EXEC add_MetaDescription N'Resources', N'SiteId', N'Site associated with the Resource'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Bibles
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'Bibles', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'Bibles', N'Code', N'Code for lookups. Must be unique'
 EXEC add_MetaDescription N'Bibles', N'Name', N'Name of this specific Bible'
@@ -219,20 +219,21 @@ EXEC add_MetaDescription N'Bibles', N'TextFormat', N'Code for the format of the 
 EXEC add_MetaDescription N'Bibles', N'SourceId', N'Optional source Resource of this Bible'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- BibleVerses
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'BibleVerses', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'BibleVerses', N'BibleId', N'The Bible for this Content'
 EXEC add_MetaDescription N'BibleVerses', N'VerseId', N'The Verse for this Content'
 EXEC add_MetaDescription N'BibleVerses', N'Markup', N'The Content of the Bible Verse'
-EXEC add_MetaDescription N'BibleVerses', N'Heading', N'Optional Heading for the Bible Verse. Noncanonical Headings should be placed in [square brackets]'
+EXEC add_MetaDescription N'BibleVerses', N'PreMarkup', N'Optional Markup, especially for scribal notes in the manuscripts.'
+EXEC add_MetaDescription N'BibleVerses', N'PostMarkup', N'Optional Markup, especially for scribal notes in the manuscripts.'
 EXEC add_MetaDescription N'BibleVerses', N'Notes', N'Optional Notes for the Bible Verse'
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- VersionNotes
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 EXEC add_MetaDescription N'VersionNotes', N'Id', N'Auto-incrementing Id'
 EXEC add_MetaDescription N'VersionNotes', N'VersionId', N'Version for this Note'
 EXEC add_MetaDescription N'VersionNotes', N'EditionId', N'Optional Edition for this Note -- for notes specific to an Edition'
