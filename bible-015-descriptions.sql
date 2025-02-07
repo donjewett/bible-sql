@@ -4,7 +4,7 @@
 *
 * bible-015-descriptions.sql
 *
-* Version: 2024.9.20
+* Version: 2024.11.15
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
