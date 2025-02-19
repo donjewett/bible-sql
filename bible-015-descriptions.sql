@@ -4,7 +4,7 @@
 *
 * bible-015-descriptions.sql
 *
-* Version: 2024.11.15
+* Version: 2025.2.19
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
@@ -203,6 +203,23 @@ EXEC add_MetaDescription N'Resources', N'EditionId', N'Optional Edition of the R
 EXEC add_MetaDescription N'Resources', N'Url', N'Source Url for the Resource'
 EXEC add_MetaDescription N'Resources', N'IsOfficial', N'True if the Resource is the official one (i.e. provided by the publisher)'
 EXEC add_MetaDescription N'Resources', N'SiteId', N'Site associated with the Resource'
+
+
+-- -------------------------------------------------------------------------
+-- PassageTypes
+-- -------------------------------------------------------------------------
+EXEC add_MetaDescription N'PassageTypes', N'Id', N'Integer Id'
+EXEC add_MetaDescription N'PassageTypes', N'Name', N'Passage Type Name'
+
+
+-- -------------------------------------------------------------------------
+-- Passages
+-- -------------------------------------------------------------------------
+EXEC add_MetaDescription N'Passages', N'Id', N'Integer Id. VerseId recommended'
+EXEC add_MetaDescription N'Passages', N'Name', N'Passage Name'
+EXEC add_MetaDescription N'Passages', N'VerseId', N'The First Verse for this Passage'
+EXEC add_MetaDescription N'Passages', N'EndVerseId', N'The Last Verse for this Passage'
+EXEC add_MetaDescription N'Passages', N'PassageTypeId', N'The Type of Passage'
 
 
 -- -------------------------------------------------------------------------

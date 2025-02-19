@@ -4,7 +4,7 @@
 * 
 * bible-020-lookups.sql
 *
-* Version: 2025.2.7
+* Version: 2025.2.19
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
@@ -72,6 +72,11 @@ IF NOT EXISTS(SELECT * FROM LicenseTypes WHERE Id = 10) INSERT INTO LicenseTypes
 IF NOT EXISTS(SELECT * FROM LicenseTypes WHERE Id = 11) INSERT INTO LicenseTypes (Id, Name, IsFree, PermissionId) VALUES(11, 'Commercial Restricted', 0, 11);
 IF NOT EXISTS(SELECT * FROM LicenseTypes WHERE Id = 12) INSERT INTO LicenseTypes (Id, Name, IsFree, PermissionId) VALUES(12, 'Creative Commons Attribution', 1, 2);
 SET IDENTITY_INSERT LicenseTypes OFF;
+
+-- -------------------------------------------------------------------------
+-- PassageTypes
+-- -------------------------------------------------------------------------
+IF NOT EXISTS(SELECT * FROM PassageTypes WHERE Id = 1) INSERT INTO PassageTypes VALUES (1, 'Pericope');
 
 -- -------------------------------------------------------------------------
 -- ResourceTypes

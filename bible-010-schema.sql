@@ -1,18 +1,18 @@
-/***************************************************************************
+/* *************************************************************************
 * Bible Database: SQL Server, by Don Jewett
 * https://github.com/donjewett/bible-sql
 *
 * bible-010-schema.sql
 *
-* Version: 2024.11.15
+* Version: 2025.2.19
 * 
 * Script License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 *
-***************************************************************************/
+************************************************************************* */
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Languages
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Languages')
 CREATE TABLE Languages (
 	Id char(3) NOT NULL,
@@ -22,9 +22,9 @@ CREATE TABLE Languages (
 	CONSTRAINT PK_Languages PRIMARY KEY CLUSTERED (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Canons
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Canons')
 CREATE TABLE Canons (
 	Id int NOT NULL,
@@ -35,9 +35,9 @@ CREATE TABLE Canons (
 	CONSTRAINT FK_Canons_Languages FOREIGN KEY (LanguageId) REFERENCES Languages (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Sections
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Sections')
 CREATE TABLE Sections (
 	Id int NOT NULL,
@@ -47,9 +47,9 @@ CREATE TABLE Sections (
 	CONSTRAINT FK_Sections_Canons FOREIGN KEY (CanonId) REFERENCES Canons (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Books
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Books')
 CREATE TABLE Books (
 	Id int NOT NULL,
@@ -68,9 +68,9 @@ CREATE TABLE Books (
 	CONSTRAINT FK_Books_Sections FOREIGN KEY (SectionId) REFERENCES Sections (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- BookNames
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'BookNames')
 CREATE TABLE BookNames (
 	Name varchar(64) NOT NULL,
@@ -79,9 +79,9 @@ CREATE TABLE BookNames (
 	CONSTRAINT FK_BookNames_Books FOREIGN KEY (BookId) REFERENCES Books (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Chapters
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Chapters')
 CREATE TABLE Chapters (
 	Id int NOT NULL,
@@ -95,9 +95,9 @@ CREATE TABLE Chapters (
 	CONSTRAINT FK_Chapters_Books FOREIGN KEY (BookId) REFERENCES Books (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Verses
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Verses')
 CREATE TABLE Verses (
 	Id int NOT NULL,
@@ -120,9 +120,9 @@ CREATE TABLE Verses (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- GreekTextForms
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'GreekTextForms')
 CREATE TABLE GreekTextForms (
 	Id char(3) NOT NULL,
@@ -133,9 +133,9 @@ CREATE TABLE GreekTextForms (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- HebrewTextForms
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'HebrewTextForms')
 CREATE TABLE HebrewTextForms (
 	Id char(3) NOT NULL,
@@ -146,9 +146,9 @@ CREATE TABLE HebrewTextForms (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- LicensePermissions
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'LicensePermissions')
 CREATE TABLE LicensePermissions (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -158,9 +158,9 @@ CREATE TABLE LicensePermissions (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- LicenseTypes
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'LicenseTypes')
 CREATE TABLE LicenseTypes (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -171,9 +171,9 @@ CREATE TABLE LicenseTypes (
 	CONSTRAINT FK_LicenseTypes_LicensePermissions FOREIGN KEY (PermissionId) REFERENCES LicensePermissions (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Versions
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Versions')
 CREATE TABLE Versions (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -196,9 +196,9 @@ CREATE TABLE Versions (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Editions
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Editions')
 CREATE TABLE Editions (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -210,9 +210,9 @@ CREATE TABLE Editions (
 	CONSTRAINT FK_Editions_Versions FOREIGN KEY (VersionId) REFERENCES Versions (Id)
 )
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Sites
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Sites')
 CREATE TABLE Sites (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -222,9 +222,9 @@ CREATE TABLE Sites (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- ResourceTypes
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'ResourceTypes')
 CREATE TABLE ResourceTypes (
 	Id varchar(8) NOT NULL,
@@ -233,9 +233,9 @@ CREATE TABLE ResourceTypes (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Resources
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Resources')
 CREATE TABLE Resources (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -253,11 +253,36 @@ CREATE TABLE Resources (
 )
 
 
+-- -------------------------------------------------------------------------
+-- PassageTypes
+-- -------------------------------------------------------------------------
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'PassageTypes')
+CREATE TABLE PassageTypes (
+	Id int NOT NULL,
+	Name nvarchar(32) NOT NULL,
+	CONSTRAINT PK_PassageTypes PRIMARY KEY CLUSTERED (Id)
+);
+
+-- -------------------------------------------------------------------------
+-- Passages
+-- -------------------------------------------------------------------------
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Passages')
+CREATE TABLE Passages (
+	Id int NOT NULL,
+	Name nvarchar(64) NOT NULL,
+	VerseId int NOT NULL,
+	EndVerseId int NOT NULL,
+	PassageTypeId int NULL,
+	CONSTRAINT PK_Passages PRIMARY KEY CLUSTERED (Id),
+	CONSTRAINT FK_Passages_Verses FOREIGN KEY (VerseId) REFERENCES Verses (Id),
+	CONSTRAINT FK_Passages_Verses_EndVerse FOREIGN KEY (EndVerseId) REFERENCES Verses (Id),
+	CONSTRAINT FK_Passages_PassageTypes FOREIGN KEY (PassageTypeId) REFERENCES PassageTypes (Id)
+);
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- Bibles
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Bibles')
 CREATE TABLE Bibles (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -276,9 +301,9 @@ CREATE TABLE Bibles (
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- BibleVerses
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'BibleVerses')
 CREATE TABLE BibleVerses (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -302,9 +327,9 @@ CREATE UNIQUE NONCLUSTERED INDEX UQ_BibleVerses_Version_Verse ON BibleVerses
 )
 
 
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 -- VersionNotes
-----------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'VersionNotes')
 CREATE TABLE VersionNotes (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -327,4 +352,3 @@ CREATE TABLE VersionNotes (
 	CONSTRAINT FK_VersionNotes_Bibles FOREIGN KEY (BibleId) REFERENCES Bibles (Id),
 	CONSTRAINT FK_VersionNotes_Editions FOREIGN KEY (EditionId) REFERENCES Editions (Id)
 )
-
